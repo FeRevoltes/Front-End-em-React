@@ -10,7 +10,7 @@ if (idade >= 18) {
 const mediaDoAluno = 7;
 
 if (mediaDoAluno >= 7) {
-  console.log("Aprovado!\nParabéns 😁 👍");
+  console.log("Aprovado!\nParabéns 😁👍");
 } else if (mediaDoAluno >= 5) {
   console.log("Prova final");
 } else {
