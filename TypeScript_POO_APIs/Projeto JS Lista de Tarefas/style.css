@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: cornflowerblue;
+  color: white;
+  font-family: "Libre Franklin", sans-serif;
+}
+
+main .title {
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 900;
+}
+
+/* Form */
+main form {
+  width: 800px;
+  display: flex;
+  margin: auto;
+  padding: 5rem 0;
+}
+main .text-input {
+  flex: 1; /* Faz com que o input text ocupe todo o espaço restante */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+}
+main .add-btn {
+  padding: 10px 20px; /* Ajuste o preenchimento conforme necessário */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0; /* Cantos arredondados no lado direito */
+  cursor: pointer;
+}
+
+/* Section de Tarefas */
+main section {
+  background-color: white;
+  width: 800px;
+  margin: auto;
+  padding: 20px 10px;
+  border-radius: 4px;
+}
+main .task-list {
+  list-style-type: none;
+  display: flex;
+  align-items: flex-start;
+}
+main .task-checkbox {
+  width: 30px;
+  height: 20px;
+  vertical-align: middle;
+  margin-bottom: 6px;
+}
+main .task-item {
+  color: black;
+  margin: 0 5px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+main .remove-btn {
+  background-color: crimson;
+  border: none;
+  color: white;
+  margin-bottom: 6px;
+  margin-left: auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -7,18 +7,19 @@ let tasks = [];
 function renderTaskOnHTML(taskTitle, done = false) {
   const li = document.createElement("li");
 
-  const input = document.createElement("input"); // <input />
-  input.setAttribute("type", "checkbox"); // <input type="checkbox"/>
+  //input checkbox
+  const input = document.createElement("input");
+  input.classList.add("task-checkbox");
+  input.setAttribute("type", "checkbox");
   input.addEventListener("change", (event) => {
     const liToToggle = event.target.parentElement;
     const done = event.target.checked;
     const spanToToggle = liToToggle.querySelector("span");
     if (done) {
-      spanToToggle.style.textDecoration = "line-through";
+      spanToToggle.style.color = "#00ff48";
     } else {
-      spanToToggle.style.textDecoration = "none";
+      spanToToggle.style.color = "black";
     }
-
     tasks = tasks.map((t) => {
       if (t.title === spanToToggle.textContent) {
         return {
@@ -28,19 +29,21 @@ function renderTaskOnHTML(taskTitle, done = false) {
       }
       return t;
     });
-
     localStorage.setItem("tasks", JSON.stringify(tasks));
   });
   input.checked = done;
 
-  
+  //span text
   const span = document.createElement("span");
+  span.classList.add("task-item");
   span.textContent = taskTitle;
   if (done) {
-    span.style.textDecoration = "line-through";
+    span.style.color = "#00ff48";
   }
-  
+
+  //button remove
   const button = document.createElement("button");
+  button.classList.add("remove-btn");
   button.textContent = "Remover";
   button.addEventListener("click", (event) => {
     const liToRemove = event.target.parentElement;
@@ -51,18 +54,19 @@ function renderTaskOnHTML(taskTitle, done = false) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   });
 
+  //Adicionar ao ul
+  li.classList.add("task-list");
   li.appendChild(input);
   li.appendChild(span);
   li.appendChild(button);
   todoListUl.appendChild(li);
-
   taskTitleInput.value = "";
 }
 
 window.onload = () => {
-  const taksOnLocalStorage = localStorage.getItem("tasks");
-  if (!taksOnLocalStorage) return;
-  tasks = JSON.parse(taksOnLocalStorage);
+  const tasksOnLocalStorage = localStorage.getItem("tasks");
+  if (!tasksOnLocalStorage) return;
+  tasks = JSON.parse(tasksOnLocalStorage);
 
   tasks.forEach((t) => {
     renderTaskOnHTML(t.title, t.done);
@@ -70,9 +74,8 @@ window.onload = () => {
 };
 
 form.addEventListener("submit", (event) => {
-  event.preventDefault(); //Evita o coportamento padrão de recarregar a página ao submeter o formulário
+  event.preventDefault(); //Evita o comportamento padrão de recarregar a página ao submeter o formulário
   const taskTitle = taskTitleInput.value;
-
   if (taskTitle.length < 3) {
     alert("Sua tarefa precisa ter pelo menos 3 caracteres ");
     return;
