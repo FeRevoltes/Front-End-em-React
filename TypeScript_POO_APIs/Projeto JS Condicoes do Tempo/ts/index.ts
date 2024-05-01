@@ -1,6 +1,7 @@
 const form = document.querySelector("#search-form > form");
 const input: HTMLInputElement | null =
   document.querySelector("#input-location");
+const myKey = 0;
 
 const weatherInfos = document.querySelector("#weather-info");
 
@@ -17,7 +18,7 @@ form?.addEventListener("submit", async (event) => {
 
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=1072a1e8ce40c9a1a79a683d4c849f32&lang=pt_br&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${myKey}&lang=pt_br&units=metric`
     );
     const data = await response.json();
 
